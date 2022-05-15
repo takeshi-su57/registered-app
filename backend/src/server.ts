@@ -2,7 +2,7 @@ import express from 'express';
 
 const app = express();
 
-const PORT = '3001';
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.status(200).send('<h1>Servidor Online</h1>');
