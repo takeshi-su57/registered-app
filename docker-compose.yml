@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  frontend:
+    build: ./frontend
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=dev
+
   backend:
     build: ./backend
     command: npm run dev
