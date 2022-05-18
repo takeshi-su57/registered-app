@@ -1,6 +1,12 @@
-import { getAll } from '../models/User';
+import { UserBody } from '../interfaces';
+import { getAll, create } from '../models/User';
 
 export const getAllUsers = async (skip: number) => {
   const users = await getAll(skip);
   return users;
+}
+
+export const createUser = async (data: UserBody) => {
+  const user = await create(data);
+  return user;
 }

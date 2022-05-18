@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
+import { UserBody } from '../interfaces';
 import * as userService from '../services/userService';
+import * as Joi from '../auth/validation';
 
 export const getAll = async (req: Request, res: Response) => {
   const { page } = req.params;
@@ -13,4 +15,17 @@ export const getAll = async (req: Request, res: Response) => {
   }
 
   res.status(400).json({ error: 'Invalid request' });
+}
+
+export const createUser = async (req: Request, res: Response) => {
+  const { name, email, password }: UserBody = req.body;
+  const userRegister = { name, email, password };
+
+  const { error } = Joi.registerNewUser.validate(userRegister);
+
+  if (error) return res.status(400).json({ error: error.details[0].message });
+
+  const newUser = await userService.createUser(userRegister);
+
+  res.status(200).json(newUser);
 }
