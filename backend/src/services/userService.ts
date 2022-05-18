@@ -1,5 +1,5 @@
 import { UserBody } from '../interfaces';
-import { getAll, create } from '../models/User';
+import { getAll, create, update } from '../models/User';
 
 export const getAllUsers = async (skip: number) => {
   const users = await getAll(skip);
@@ -9,4 +9,9 @@ export const getAllUsers = async (skip: number) => {
 export const createUser = async (data: UserBody) => {
   const user = await create(data);
   return user;
+}
+
+export const updateUser = async (id: number, data: UserBody) => {
+  const updateUser = await update(id, data);
+  return updateUser;
 }

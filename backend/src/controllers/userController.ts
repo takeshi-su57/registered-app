@@ -3,7 +3,7 @@ import { UserBody } from '../interfaces';
 import * as userService from '../services/userService';
 import * as Joi from '../auth/validation';
 
-export const getAll = async (req: Request, res: Response, next: NextFunction) => {
+export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   const { page } = req.params;
 
   if (page && page !== '0' && typeof Number(page) === 'number') {
@@ -33,6 +33,23 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
     const newUser = await userService.createUser(userRegister);
 
     return res.status(200).json(newUser);
+  } catch (err) {
+    return next(err);
+  }
+}
+
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params;
+  const data: UserBody = req.body;
+
+  const { error } = Joi.updateUser.validate(data);
+
+  if (error) return next(error);
+  
+  try {
+    const updateUser = await userService.updateUser(Number(id), data);
+
+    return res.status(200).json(updateUser);
   } catch (err) {
     return next(err);
   }
