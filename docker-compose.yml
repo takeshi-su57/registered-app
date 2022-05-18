@@ -1,6 +1,31 @@
-version: '3'
+version: "3"
 
 services:
+  db:
+    image: "postgres"
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "registrado"
+    ports:
+      - "5432:5432"
+    volumes: 
+      - db:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/registrado?schema=public"
+    restart: always
+    volumes:
+      - ./backend:/app
+    command: npm run dev
+    depends_on:
+      - db
+
   frontend:
     build: ./frontend
     command: npm run dev
@@ -10,24 +35,10 @@ services:
       - ./frontend:/app
     environment:
       - NODE_ENV=dev
-
-  backend:
-    build: ./backend
-    command: npm run dev
-    ports:
-      - "3001:3001"
-    volumes:
-      - ./backend:/app
-  db:
-    image: postgres:14.1-alpine
     restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
-    volumes: 
-      - db:/var/lib/postgresql/data
+    depends_on:
+      - backend
+
 volumes:
   db:
     driver: local
