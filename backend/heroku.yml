@@ -1,3 +1,6 @@
 build:
   docker:
     web: Dockerfile
+release:
+  command:
+    - npx prisma migrate deploy

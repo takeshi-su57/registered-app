@@ -8,7 +8,9 @@
     "build": "tsc",
     "db:reset": "npx prisma migrate reset --force",
     "start": "tsc && node dist/server.js",
-    "dev": "ts-node-dev src/server.ts"
+    "dev": "ts-node-dev src/server.ts",
+    "heroku-prebuild": "npx prisma migrate deploy",
+    "heroku-postbuild": "npx prisma migrate deploy"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
