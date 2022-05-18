@@ -3,6 +3,6 @@ import * as UserController from '../controllers/userController';
 
 const router = Router();
 
-router.get('/', UserController.getAll);
+router.get('/:page', UserController.getAll);
 
 export default router;
