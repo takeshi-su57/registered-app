@@ -1,8 +1,21 @@
-import type { NextPage, GetServerSideProps } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { getUsers } from '../services/api';
 import styles from '../styles/styles.module.scss';
 
 const Home: NextPage = () => {
+  const [users, setUsers] = useState();
+
+  const loadUser = async () => {
+    const data = await getUsers();
+    setUsers(data);
+  }
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
   return (
     <div className={ styles.container }>
       <Head>
@@ -29,17 +42,6 @@ const Home: NextPage = () => {
       </main>
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('http://localhost:3001/users')
-  const users = await res.json()
-
-  console.log(users);
-
-  return {
-    props: { users },
-  }
 }
 
 export default Home;
