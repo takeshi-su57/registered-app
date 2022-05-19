@@ -10,7 +10,7 @@ const Header: NextComponentType = () => {
         </h1>
       </div>
     </header>
-  );
-};
+  )
+}
 
 export default Header;

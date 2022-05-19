@@ -8,8 +8,10 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [users, setUsers] = useState(DEFAULT_VALUE.users);
 
   const loadUsers = async () => {
-    const data = await getUsers();
-    setUsers(data);
+    setTimeout(async () => {
+      const data = await getUsers();
+      setUsers(data);
+    }, 5000)
   }
 
   useEffect(() => {

@@ -19,6 +19,6 @@ const ControlPanel: NextComponentType = () => {
       </button>
     </div>
   )
-};
+}
 
 export default ControlPanel;

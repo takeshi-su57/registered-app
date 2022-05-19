@@ -8,6 +8,6 @@ const Loading: NextComponentType = () => {
       <div></div>
     </div>
   )
-};
+}
 
 export default Loading;
