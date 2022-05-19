@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx prisma migrate deploy && npx prisma db seed && tsc",
     "db:reset": "npx prisma migrate reset --force",
-    "start": "npm run build && node dist/server.js",
+    "start": "tsc && node dist/server.js",
     "dev": "ts-node-dev src/server.ts"
   },
   "prisma": {
