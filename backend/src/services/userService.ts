@@ -1,5 +1,10 @@
 import { UserBody, UserFindBy } from '../interfaces';
-import { getAll, create, update, deleteUser, getBy } from '../models/User';
+import { getAll, create, update, deleteUser, getBy, getCount } from '../models/User';
+
+export const getCountUsers = async () => {
+  const countUsers = await getCount();
+  return countUsers;
+}
 
 export const getAllUsers = async (skip: number) => {
   const users = await getAll(skip);

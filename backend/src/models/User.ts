@@ -1,6 +1,11 @@
 import { UserBody, UserFindBy } from '../interfaces';
 import prisma from '../database/connection';
 
+export const getCount = async () => {
+  const count = await prisma.user.count();
+  return count;
+}
+
 export const getAll = async (skip: number) => {
   const users = await prisma.user.findMany({
     skip: skip,

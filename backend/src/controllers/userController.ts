@@ -3,6 +3,16 @@ import { UserBody, UserFindBy } from '../interfaces';
 import * as userService from '../services/userService';
 import * as Joi from '../auth/validation';
 
+export const getCountUsers = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const usersQuantity = await userService.getCountUsers(); 
+
+    return res.status(200).json(usersQuantity);
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   const { page } = req.params;
 
