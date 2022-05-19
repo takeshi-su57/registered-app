@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { UserBody } from '../interfaces';
+import { UserBody, UserFindBy } from '../interfaces';
 import * as userService from '../services/userService';
 import * as Joi from '../auth/validation';
 
@@ -19,6 +19,18 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
   }
 
   return res.status(400).json({ error: 'Invalid request' });
+}
+
+export const getUsersFind = async (req: Request, res: Response, next: NextFunction) => {
+  const findWhere: UserFindBy = req.body;
+
+  try {
+    const users = await userService.findUserBy(findWhere); 
+
+    return res.status(200).json(users);
+  } catch (err) {
+    return next(err);
+  }
 }
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {

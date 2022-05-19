@@ -1,4 +1,4 @@
-import { UserBody } from '../interfaces';
+import { UserBody, UserFindBy } from '../interfaces';
 import prisma from '../database/connection';
 
 export const getAll = async (skip: number) => {
@@ -6,6 +6,11 @@ export const getAll = async (skip: number) => {
     skip: skip,
     take: 10,
   });
+  return users;
+}
+
+export const getBy = async (findWhere: UserFindBy) => {
+  const users = await prisma.user.findMany({ where: findWhere });
   return users;
 }
 

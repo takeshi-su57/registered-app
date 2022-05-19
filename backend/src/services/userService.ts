@@ -1,5 +1,5 @@
-import { UserBody } from '../interfaces';
-import { getAll, create, update, deleteUser } from '../models/User';
+import { UserBody, UserFindBy } from '../interfaces';
+import { getAll, create, update, deleteUser, getBy } from '../models/User';
 
 export const getAllUsers = async (skip: number) => {
   const users = await getAll(skip);
@@ -19,4 +19,9 @@ export const updateUser = async (id: number, data: UserBody) => {
 export const deleteUserById = async (id: number) => {
   const deletedUser = await deleteUser(id);
   return deletedUser;
+}
+
+export const findUserBy = async (findWhere: UserFindBy) => {
+  const users = await getBy(findWhere);
+  return users;
 }
