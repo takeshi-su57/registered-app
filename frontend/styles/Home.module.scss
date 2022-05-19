@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'mixins';
+
+.main {
+  .header {
+    background-color: $primary-color;
+    
+    &Container {
+      @include container;
+    }
+
+    .title {
+      color: $secondary-color;
+      margin: 10px;
+    }
+  }
+}
