@@ -1,5 +1,8 @@
 @import 'variables';
 @import 'mixins';
 
-@import 'components/loading';
 @import 'layout/header';
+@import 'layout/content';
+
+@import 'components/loading';
+@import 'components/controlPanel';
