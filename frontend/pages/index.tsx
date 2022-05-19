@@ -1,22 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import Header from '../components/Header';
 import ControlPanel from '../components/ControlPanel';
-import { getUsers } from '../services/api';
 import styles from '../styles/styles.module.scss';
 
 const Home: NextPage = () => {
-  const [users, setUsers] = useState();
-
-  const loadUser = async () => {
-    const data = await getUsers();
-    setUsers(data);
-  }
-
-  useEffect(() => {
-    loadUser();
-  }, []);
-
   return (
     <div className={ styles.container }>
       <Head>
@@ -26,13 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={ styles.main }>
-        <header className={ styles.header }>
-          <div className={ styles.headerContainer }>
-            <h1 className={ styles.title }>
-              Registrado
-            </h1>
-          </div>
-        </header>
+        <Header />
 
         <section className={ styles.content }>
           <ControlPanel />
