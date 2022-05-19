@@ -1,6 +1,6 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/styles.module.scss';
 
 const Home: NextPage = () => {
   return (
@@ -19,9 +19,27 @@ const Home: NextPage = () => {
             </h1>
           </div>
         </header>
+
+        <section className={ styles.containerLoading }>
+          <div className={ styles.ldsRipple }>
+            <div></div>
+            <div></div>
+          </div>
+        </section>
       </main>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch('http://localhost:3001/users')
+  const users = await res.json()
+
+  console.log(users);
+
+  return {
+    props: { users },
+  }
 }
 
 export default Home;
