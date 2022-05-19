@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import Loading from '../components/loading';
 import { getUsers } from '../services/api';
 import styles from '../styles/styles.module.scss';
 
@@ -33,12 +34,15 @@ const Home: NextPage = () => {
           </div>
         </header>
 
-        <section className={ styles.containerLoading }>
-          <div className={ styles.ldsRipple }>
-            <div></div>
-            <div></div>
-          </div>
-        </section>
+        {
+          users ? (
+            <h1>Carregou</h1>
+          ) : (
+            <section className={ styles.containerLoading }>
+              <Loading />
+            </section>
+          )
+        }
       </main>
     </div>
   )
