@@ -10,11 +10,19 @@ export interface User {
 
 export const DEFAULT_VALUE = {
   users: [],
-  setUsers: () => {}
+  quantityUsers: 0,
+  pages: [],
+  setUsers: () => {},
+  setQuantity: () => {},
+  setPages: () => {},
+  loadUsersForPage: (page: number) => {}
 };
 
 export type AppContextType = {
   users: User[];
+  quantityUsers: number;
+  pages: number[];
+  loadUsersForPage: Function;
 };
 
 export type propsProvider = {
