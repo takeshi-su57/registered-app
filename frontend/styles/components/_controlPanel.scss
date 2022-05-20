@@ -1,4 +1,52 @@
 .controlPanel {
-  background-color: rgb(180, 180, 255);
   display: flex;
+
+  form {
+    display: flex;
+    width: 80%;
+
+    input {
+      border: 1px solid $primary-color;
+      border-right: none;
+      border-radius: 20px 0 0 20px;
+      font-size: 16px;
+      padding: 10px 20px;
+      width: 60%;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    select {
+      border: none;
+      border-top: 1px solid $primary-color;
+      border-bottom: 1px solid $primary-color;
+      background-color: $secondary-color;
+      color: white;
+      font-size: 16px;
+      padding: 5px;
+      width: 10%;
+    }
+
+    button {
+      background-color: $primary-color;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      width: 20%;
+    }
+  }
+
+  .btnNewUser {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    width: 20%;
+  }
 }

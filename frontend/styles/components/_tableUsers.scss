@@ -1,3 +1,80 @@
 .table {
+  margin-top: 20px;
   width: 100%;
+
+  thead {
+    color: white;
+    text-align: left;
+
+    tr {
+      th {
+        background-color: $primary-color;
+        padding: 10px;
+
+        &:first-child {
+          border-radius: 10px 0 0;
+          text-align: center;
+        }
+
+        &:last-child {
+          border-radius: 0 10px 0 0;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        background-color: rgb(224, 224, 255);
+        padding: 10px;
+
+        &:first-child {
+          text-align: center;
+        }
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-evenly;
+
+        button {
+          align-items: center;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          font-size: 20px;
+          justify-content: center;
+          padding: 8px;
+          visibility: hidden;
+
+          &:hover {
+            background-color: $primary-color;
+            color: white;
+          }
+        }
+      }
+
+      &:hover {
+        td {
+          background-color: rgb(232, 232, 255);
+        }
+
+        .options {
+          button {
+            visibility: visible;
+          }
+        }
+      }
+
+      &:last-child {
+        td {
+          &:first-child {
+            border-radius: 0 0 0 10px;
+          }
+        }
+      }
+    }
+  }
 }

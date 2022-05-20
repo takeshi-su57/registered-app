@@ -5,7 +5,7 @@ const ControlPanel: NextComponentType = () => {
   return (
     <div className={ styles.controlPanel }>
       <form>
-        <input type="text" name="" id="" />
+        <input type="text" placeholder="Digite aqui..." />
         <select name="" id="">
           <option value="">Nome</option>
           <option value="">Email</option>
@@ -14,7 +14,7 @@ const ControlPanel: NextComponentType = () => {
           Pesquisar
         </button>
       </form>
-      <button>
+      <button className={ styles.btnNewUser }>
         Registrar novo usuário
       </button>
     </div>
