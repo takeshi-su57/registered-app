@@ -57,12 +57,14 @@ const TableUsers: NextComponentType = () => {
           }
         </tbody>
       </table>
-      <button onClick={ previousPage } disabled={ page === 1 ? true : false }>
-        Anterior
+      <div className={ styles.controlPage }>
+        <button onClick={ previousPage } disabled={ page === 1 ? true : false }>
+          Anterior
+          </button>
+        <button onClick={ nextPage }>
+          Próximo
         </button>
-      <button onClick={ nextPage }>
-        Próximo
-      </button>
+      </div>
     </>
   )
 }
