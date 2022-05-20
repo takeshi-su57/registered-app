@@ -6,17 +6,37 @@ import styles from '../styles/styles.module.scss';
 import Loading from './Loading';
 
 const TableUsers: NextComponentType = () => {
-  const { users, loadUsersForPage } = useContext(AppContext);
+  const { users, loadUsersForPage, loadUsersFind, quantityUsers, filter } = useContext(AppContext);
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
     setPage(page + 1);
-    loadUsersForPage(page + 1);
+    if (filter.name || filter.email) {
+      loadUsersFind(filter, (page + 1));
+    } else {
+      loadUsersForPage(page + 1);
+    }
   }
 
   const previousPage = () => {
     setPage(page - 1);
-    loadUsersForPage(page - 1);
+    if (filter.name || filter.email) {
+      loadUsersFind(filter, (page - 1));
+    } else {
+      loadUsersForPage(page - 1);
+    }
+  }
+
+  useEffect(() => {
+    setPage(1);
+  }, [filter])
+
+  if (quantityUsers === 0) {
+    return (
+      <div className={ styles.containerLoading }>
+        <h1>Nenhum usuário foi encontrado</h1>
+      </div>
+    )
   }
 
   if (!users.length) {
@@ -61,7 +81,7 @@ const TableUsers: NextComponentType = () => {
         <button onClick={ previousPage } disabled={ page === 1 ? true : false }>
           Anterior
           </button>
-        <button onClick={ nextPage }>
+        <button onClick={ nextPage } disabled={ quantityUsers <= 10 ? true : false }>
           Próximo
         </button>
       </div>

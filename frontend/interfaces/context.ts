@@ -10,19 +10,20 @@ export interface User {
 
 export const DEFAULT_VALUE = {
   users: [],
-  quantityUsers: 0,
-  pages: [],
+  quantityUsers: 1,
+  filter: {},
   setUsers: () => {},
   setQuantity: () => {},
-  setPages: () => {},
-  loadUsersForPage: (page: number) => {}
+  loadUsersForPage: () => {},
+  loadUsersFind: () => {}
 };
 
 export type AppContextType = {
   users: User[];
   quantityUsers: number;
-  pages: number[];
+  filter: { name?: string, email?: string };
   loadUsersForPage: Function;
+  loadUsersFind: Function;
 };
 
 export type propsProvider = {

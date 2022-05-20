@@ -1,13 +1,14 @@
 import { useState, createContext, useEffect } from 'react';
 import { AppContextType, DEFAULT_VALUE, propsProvider } from '../interfaces/context';
-import { getQuantityUsers, getUsers } from '../services/api';
+import { UserFindBy } from '../interfaces/user';
+import { findUser, getQuantityUsers, getQuantityUsersFind, getUsers } from '../services/api';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
 export const AppProvider = ({ children }: propsProvider) => {
   const [users, setUsers] = useState(DEFAULT_VALUE.users);
+  const [filter, setFilter] = useState(DEFAULT_VALUE.filter);
   const [quantityUsers, setQuantity] = useState(DEFAULT_VALUE.quantityUsers);
-  const [pages, setPages] = useState([]);
 
   const loadUsers = async () => {
     setTimeout(async () => {
@@ -17,7 +18,7 @@ export const AppProvider = ({ children }: propsProvider) => {
 
       const data = await getUsers(1);
       setUsers(data);
-    }, 5000)
+    }, 2000)
   }
 
   const loadUsersForPage = async (page: number) => {
@@ -28,12 +29,40 @@ export const AppProvider = ({ children }: propsProvider) => {
     }, 2000)
   }
 
+  const loadUsersFind = async (findWhere: UserFindBy, page: number) => {
+    setQuantity(1);
+    setUsers([]);
+    setTimeout(async () => {
+      if (findWhere.name || findWhere.email ) {
+        setFilter(findWhere);
+        const dataFind = await findUser(findWhere, page);
+        const quantityFind = await getQuantityUsersFind(findWhere);
+
+        setQuantity(quantityFind);
+        setUsers(dataFind);
+      } else {
+        setFilter({});
+        const data = await getUsers(1);
+        const quantity = await getQuantityUsers();
+
+        setQuantity(quantity);
+        setUsers(data);
+      }
+    }, 2000)
+  }
+
   useEffect(() => {
     loadUsers();
   }, []);
 
   return (
-    <AppContext.Provider value={{ users, quantityUsers, pages, loadUsersForPage }}>
+    <AppContext.Provider value={{
+      users,
+      quantityUsers,
+      filter,
+      loadUsersForPage,
+      loadUsersFind
+    }}>
       { children }
     </AppContext.Provider>
   );

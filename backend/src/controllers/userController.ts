@@ -4,8 +4,21 @@ import * as userService from '../services/userService';
 import * as Joi from '../auth/validation';
 
 export const getCountUsers = async (req: Request, res: Response, next: NextFunction) => {
+  const { email, name } = req.query;
+  let usersQuantity = 0;
+
   try {
-    const usersQuantity = await userService.getCountUsers(); 
+    if (name) {
+      usersQuantity = await userService.getCountUsersFindName(`${name}`);
+      return res.status(200).json(usersQuantity);
+    }
+
+    if (email) {
+      usersQuantity = await userService.getCountUsersFindEmail(`${email}`);
+      return res.status(200).json(usersQuantity);
+    }
+
+    usersQuantity = await userService.getCountUsers(); 
 
     return res.status(200).json(usersQuantity);
   } catch (err) {
@@ -32,20 +45,21 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 }
 
 export const getUsersFind = async (req: Request, res: Response, next: NextFunction) => {
-  const { email, name } = req.query;
+  const { email, name, skip } = req.query;
+  let skipPage = (Number(skip) * 10) - 10;
 
   try {
     if (name) {
-      const users = await userService.findUserByName(`${name}`);
+      const users = await userService.findUserByName(`${name}`, skipPage);
       return res.status(200).json(users);
     }
 
     if (email) {
-      const users = await userService.findUserByEmail(`${email}`);
+      const users = await userService.findUserByEmail(`${email}`, skipPage);
       return res.status(200).json(users);
     }
 
-    return res.status(200).json('Nenhum termo encontrado!');
+    return res.status(404).json({ error: 'Not Found' });
   } catch (err) {
     return next(err);
   }

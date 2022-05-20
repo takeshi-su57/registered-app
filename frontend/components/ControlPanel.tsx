@@ -1,15 +1,17 @@
 import type { NextComponentType } from 'next';
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, useContext } from 'react';
+import { AppContext } from '../contexts/AppProvider';
 import styles from '../styles/styles.module.scss';
 
 const ControlPanel: NextComponentType = () => {
   const [search, setSearch] = useState('');
   const [findBy, setFindBy] = useState('name');
+  const { loadUsersFind } = useContext(AppContext);
 
   const sendSearch = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    console.log({ [findBy]: search });
+    loadUsersFind({ [findBy]: search }, 1);
   }
 
   return (
