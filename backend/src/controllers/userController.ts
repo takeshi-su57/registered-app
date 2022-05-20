@@ -32,12 +32,20 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 }
 
 export const getUsersFind = async (req: Request, res: Response, next: NextFunction) => {
-  const findWhere: UserFindBy = req.body;
+  const { email, name } = req.query;
 
   try {
-    const users = await userService.findUserBy(findWhere); 
+    if (name) {
+      const users = await userService.findUserByName(`${name}`);
+      return res.status(200).json(users);
+    }
 
-    return res.status(200).json(users);
+    if (email) {
+      const users = await userService.findUserByEmail(`${email}`);
+      return res.status(200).json(users);
+    }
+
+    return res.status(200).json('Nenhum termo encontrado!');
   } catch (err) {
     return next(err);
   }

@@ -1,5 +1,13 @@
 import { UserBody, UserFindBy } from '../interfaces';
-import { getAll, create, update, deleteUser, getBy, getCount } from '../models/User';
+import {
+  getAll,
+  create,
+  update,
+  deleteUser,
+  getByName,
+  getCount,
+  getByEmail
+} from '../models/User';
 
 export const getCountUsers = async () => {
   const countUsers = await getCount();
@@ -26,7 +34,12 @@ export const deleteUserById = async (id: number) => {
   return deletedUser;
 }
 
-export const findUserBy = async (findWhere: UserFindBy) => {
-  const users = await getBy(findWhere);
+export const findUserByName = async (name: string) => {
+  const users = await getByName(name);
+  return users;
+}
+
+export const findUserByEmail = async (email: string) => {
+  const users = await getByEmail(email);
   return users;
 }

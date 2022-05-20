@@ -1,16 +1,32 @@
 import type { NextComponentType } from 'next';
+import { useState, MouseEvent } from 'react';
 import styles from '../styles/styles.module.scss';
 
 const ControlPanel: NextComponentType = () => {
+  const [search, setSearch] = useState('');
+  const [findBy, setFindBy] = useState('name');
+
+  const sendSearch = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    console.log({ [findBy]: search });
+  }
+
   return (
     <div className={ styles.controlPanel }>
       <form>
-        <input type="text" placeholder="Digite aqui..." />
-        <select name="" id="">
-          <option value="">Nome</option>
-          <option value="">Email</option>
+        <input
+          type="text"
+          placeholder="Pesquisar por..."
+          onChange={ ({ target }) => setSearch(target.value) }
+        />
+        <select onChange={ 
+          ({ target }) => setFindBy(target.options[target.selectedIndex].value)
+        }>
+          <option value="name">Nome</option>
+          <option value="email">Email</option>
         </select>
-        <button type="submit">
+        <button type="submit" onClick={ sendSearch }>
           Pesquisar
         </button>
       </form>

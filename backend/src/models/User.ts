@@ -14,8 +14,27 @@ export const getAll = async (skip: number) => {
   return users;
 }
 
-export const getBy = async (findWhere: UserFindBy) => {
-  const users = await prisma.user.findMany({ where: findWhere });
+export const getByName = async (name: string) => {
+  const users = await prisma.user.findMany({
+    where: {
+      name: {
+        contains: name,
+        mode: 'insensitive',
+      },
+    },
+  });
+  return users;
+}
+
+export const getByEmail = async (email: string) => {
+  const users = await prisma.user.findMany({
+    where: {
+      email: {
+        contains: email,
+        mode: 'insensitive',
+      },
+    },
+  });
   return users;
 }
 
