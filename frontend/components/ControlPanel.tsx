@@ -1,4 +1,5 @@
 import type { NextComponentType } from 'next';
+import Router from 'next/router';
 import { useState, MouseEvent, useContext } from 'react';
 import { AppContext } from '../contexts/AppProvider';
 import styles from '../styles/styles.module.scss';
@@ -32,7 +33,7 @@ const ControlPanel: NextComponentType = () => {
           Pesquisar
         </button>
       </form>
-      <button className={ styles.btnNewUser }>
+      <button className={ styles.btnNewUser } onClick={ () => Router.push('/create') }>
         Registrar novo usuário
       </button>
     </div>

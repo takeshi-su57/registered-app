@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { UserFindBy } from '../interfaces/user';
+import { UserCreate, UserFindBy } from '../interfaces/user';
 
 const api = axios.create({
   baseURL: process.env.API_URL || 'http://localhost:3001',
@@ -28,3 +28,8 @@ export const getQuantityUsersFind = async (findWhere: UserFindBy) => {
   const { data } = await api.get(`/users?${objFind[0]}=${objFind[1]}`);
   return data;
 };
+
+export const createUser = async (newUser: UserCreate) => {
+  const { data } = await api.post('/users/create', newUser);
+  return data;
+}

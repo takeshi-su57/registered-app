@@ -1,5 +1,4 @@
 import type { NextComponentType } from 'next';
-import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../contexts/AppProvider';
 import styles from '../styles/styles.module.scss';
@@ -81,7 +80,9 @@ const TableUsers: NextComponentType = () => {
         <button onClick={ previousPage } disabled={ page === 1 ? true : false }>
           Anterior
           </button>
-        <button onClick={ nextPage } disabled={ quantityUsers <= 10 ? true : false }>
+        <button 
+          onClick={ nextPage }
+          disabled={ quantityUsers <= 10 || users.length < 10 ? true : false }>
           Próximo
         </button>
       </div>
