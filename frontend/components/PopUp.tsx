@@ -1,11 +1,15 @@
-import type { NextComponentType } from 'next';
+import React from 'react';
 import styles from '../styles/styles.module.scss';
 
-const PopUp: NextComponentType = () => {
+type Props = {
+  message: string;
+}
+
+const PopUp: React.FC<Props> = ({ message }) => {
   return (
     <div className={ styles.containerFloat }>
       <div className={ styles.popup }>
-        <span>Algo deu errado!</span>
+        <span>{ message }</span>
       </div>
     </div>
   )
