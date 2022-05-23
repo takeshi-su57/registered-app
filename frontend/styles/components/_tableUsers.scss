@@ -100,3 +100,57 @@
     }
   }
 }
+
+.warningContainer {
+  background-color: rgba(0, 0, 0, 0.611);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .warning {
+    background-color: white;
+    border-top: 5px solid $primary-color;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    animation-name: fadeIn;
+    animation-duration: 0.2s;
+
+    .warningBtns {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        cursor: pointer;
+        padding: 5px 10px;
+
+        &:first-child {
+          background-color: transparent;
+          border: none;
+          color: $primary-color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &:last-child {
+          background-color: $primary-color;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
