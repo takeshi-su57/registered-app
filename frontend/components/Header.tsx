@@ -5,7 +5,7 @@ import { AppContext } from '../contexts/AppProvider';
 import styles from '../styles/styles.module.scss';
 
 const Header: NextComponentType = () => {
-  const { loadUsersForPage } = useContext(AppContext);
+  const { loadUsersForPage, filter } = useContext(AppContext);
 
   const loadHome = () => {
     loadUsersForPage(1);

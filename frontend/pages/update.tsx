@@ -56,7 +56,7 @@ const Create: NextPage = () => {
       <Header />
       <main className={ styles.main }>
         <section className={ styles.content }>
-          <h1 className={ styles.titlePage }>Criação de usuário</h1>
+          <h1 className={ styles.titlePage }>Atualização de usuário</h1>
 
           <form className={ styles.forms }>
             <label htmlFor="name">Nome</label>
