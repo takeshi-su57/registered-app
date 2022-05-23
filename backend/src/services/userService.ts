@@ -4,6 +4,7 @@ import {
   create,
   update,
   deleteUser,
+  getUser,
   getByName,
   getByEmail,
   getCount,
@@ -29,6 +30,11 @@ export const getCountUsersFindEmail = async (email: string) => {
 export const getAllUsers = async (skip: number) => {
   const users = await getAll(skip);
   return users;
+}
+
+export const getOneUser = async (id: number) => {
+  const user = await getUser(id);
+  return user;
 }
 
 export const createUser = async (data: UserBody) => {

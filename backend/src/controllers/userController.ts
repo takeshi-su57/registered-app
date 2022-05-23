@@ -65,6 +65,18 @@ export const getUsersFind = async (req: Request, res: Response, next: NextFuncti
   }
 }
 
+export const getOneUser = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params;
+
+  try {
+    const user = await userService.getOneUser(Number(id));
+
+    return res.status(200).json(user);
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   const { name, email, password }: UserBody = req.body;
   const userRegister = { name, email, password };

@@ -66,6 +66,11 @@ export const getByEmail = async (email: string, skip: number) => {
   return users;
 }
 
+export const getUser = async (id: number) => {
+  const user = await prisma.user.findFirst({ where: { id } });
+  return user;
+}
+
 export const create = async (data: UserBody) => {
   const user = await prisma.user.create({ data });
   return user;
