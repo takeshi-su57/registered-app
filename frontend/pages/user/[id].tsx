@@ -1,16 +1,47 @@
+import { AxiosError } from 'axios';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+import Router from 'next/router';
+import { useContext, useState, MouseEvent } from 'react';
 import Header from '../../components/Header';
+import PopUp from '../../components/PopUp';
+import { AppContext } from '../../contexts/AppProvider';
+import { errorMessage } from '../../interfaces/error';
+import { Message } from '../../interfaces/messages';
+import { updateUser } from '../../services/api';
 import styles from '../../styles/styles.module.scss';
 
 const UpdateUser: NextPage = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const router = useRouter();
-  const { id } = router.query;
+  const { userEdit, loadUsersForPage } = useContext(AppContext);
+  const [name, setName] = useState(userEdit.name);
+  const [email, setEmail] = useState(userEdit.email);
+  const [password, setPassword] = useState(userEdit.password);
+  const [popUp, setPopUp] = useState({ view: false, message: '' });
 
+  const viewPopUpTimer = (message: string) => {
+    setPopUp({ view: true, message });
+
+    setTimeout(() => {
+      setPopUp({ view: false, message });
+    }, 5000)
+  }
+
+  const submitUpdateUser = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    try {
+      const newUser = await updateUser({ name, email, password }, userEdit.id);
+      viewPopUpTimer(Message.SUCCESS_UPDATE);
+      setTimeout(() => {
+        loadUsersForPage(1);
+        Router.push('/');
+      }, 5000)
+    } catch (error: any | AxiosError) {
+      const err: errorMessage = error.response?.data;
+      viewPopUpTimer(err.error.message);
+      console.log(err.error.message);
+    }
+  }
+  
   return (
     <div className={ styles.container }>
       <Header />
@@ -46,12 +77,23 @@ const UpdateUser: NextPage = () => {
               value={ password }
               onChange={ ({ target }) => setPassword(target.value) }
             />
-            
-            <button>
-              Atualizar
-            </button>
+
+            <div className={ styles.containerBtns }>
+              <button onClick={ (e) => {
+                e.preventDefault();
+                Router.push('/');
+              } } className={ styles.btnCancel }>
+                Cancelar
+              </button>
+              
+              <button className={ styles.btnAction } onClick={ submitUpdateUser }>
+                Atualizar
+              </button>
+            </div>
           </form>
         </section>
+
+        { popUp.view ? <PopUp message={ popUp.message } /> : '' }
       </main>
     </div>
   )

@@ -12,6 +12,8 @@ export const DEFAULT_VALUE = {
   users: [],
   quantityUsers: 1,
   filter: {},
+  userEdit: { id: 0, name: '', email: '', password: '', createdAt: new Date() }, 
+  editUser: () => {},
   setUsers: () => {},
   setQuantity: () => {},
   loadUsersForPage: () => {},
@@ -22,8 +24,10 @@ export type AppContextType = {
   users: User[];
   quantityUsers: number;
   filter: { name?: string, email?: string };
+  userEdit: User;
   loadUsersForPage: Function;
   loadUsersFind: Function;
+  editUser: Function;
 };
 
 export type propsProvider = {

@@ -10,6 +10,11 @@ export const getUsers = async (page: number) => {
   return data;
 };
 
+export const getUser = async (id: string) => {
+  const { data } = await api.get(`/users/get/${id}`);
+  return data;
+}
+
 export const getQuantityUsers = async () => {
   const { data } = await api.get('/users');
   return data;
@@ -31,5 +36,10 @@ export const getQuantityUsersFind = async (findWhere: UserFindBy) => {
 
 export const createUser = async (newUser: UserCreate) => {
   const { data } = await api.post('/users/create', newUser);
+  return data;
+}
+
+export const updateUser = async (user: UserCreate, id: number) => {
+  const { data } = await api.put(`/users/update/${id}`, user);
   return data;
 }

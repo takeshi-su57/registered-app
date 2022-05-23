@@ -8,6 +8,7 @@ import { createUser } from '../services/api';
 import { Message } from '../interfaces/messages';
 import styles from '../styles/styles.module.scss';
 import Header from '../components/Header';
+import Router from 'next/router';
 
 const Create: NextPage = () => {
   const [name, setName] = useState('');
@@ -86,9 +87,18 @@ const Create: NextPage = () => {
               onChange={ ({ target }) => setPassword(target.value) }
             />
             
-            <button onClick={ submitNewUser }>
-              Salvar
-            </button>
+            <div className={ styles.containerBtns }>
+              <button className={ styles.btnCancel } onClick={ (e) => {
+                e.preventDefault();
+                Router.push('/');
+              } }>
+                Cancelar
+              </button>
+
+              <button className={ styles.btnAction } onClick={ submitNewUser }>
+                Salvar
+              </button>
+            </div>
           </form>
         </section>
         

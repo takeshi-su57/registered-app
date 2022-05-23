@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { AppContextType, DEFAULT_VALUE, propsProvider } from '../interfaces/context';
+import { AppContextType, DEFAULT_VALUE, propsProvider, User } from '../interfaces/context';
 import { UserFindBy } from '../interfaces/user';
 import { findUser, getQuantityUsers, getQuantityUsersFind, getUsers } from '../services/api';
 
@@ -7,6 +7,7 @@ export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
 export const AppProvider = ({ children }: propsProvider) => {
   const [users, setUsers] = useState(DEFAULT_VALUE.users);
+  const [userEdit, setUserEdit] = useState(DEFAULT_VALUE.userEdit);
   const [filter, setFilter] = useState(DEFAULT_VALUE.filter);
   const [quantityUsers, setQuantity] = useState(DEFAULT_VALUE.quantityUsers);
 
@@ -51,6 +52,10 @@ export const AppProvider = ({ children }: propsProvider) => {
     }, 2000)
   }
 
+  const editUser = (user: User) => {
+    setUserEdit(user);
+  }
+
   useEffect(() => {
     loadUsers();
   }, []);
@@ -60,8 +65,10 @@ export const AppProvider = ({ children }: propsProvider) => {
       users,
       quantityUsers,
       filter,
+      userEdit,
       loadUsersForPage,
-      loadUsersFind
+      loadUsersFind,
+      editUser
     }}>
       { children }
     </AppContext.Provider>
