@@ -98,12 +98,12 @@ const TableUsers: NextComponentType = () => {
           </button>
         <button 
           onClick={ nextPage }
-          disabled={ quantityUsers <= 10 || users.length < 10 ? true : false }>
+          disabled={ quantityUsers <= 10 || users.length < 10 || (quantityUsers / 10) === page ? true : false }>
           Próximo
         </button>
       </div>
 
-      { warning.view ? <Warning setWarning={ setWarning } id={ warning.id } /> : '' }
+      { warning.view ? <Warning setPage={ setPage } setWarning={ setWarning } id={ warning.id } /> : '' }
     </>
   )
 }

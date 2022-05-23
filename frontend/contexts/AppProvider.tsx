@@ -12,44 +12,39 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [quantityUsers, setQuantity] = useState(DEFAULT_VALUE.quantityUsers);
 
   const loadUsers = async () => {
-    setTimeout(async () => {
-      const quantity = await getQuantityUsers();
+    const quantity = await getQuantityUsers();
 
-      setQuantity(quantity);
+    setQuantity(quantity);
 
-      const data = await getUsers(1);
-      setUsers(data);
-    }, 2000)
+    const data = await getUsers(1);
+    setUsers(data);
   }
 
   const loadUsersForPage = async (page: number) => {
     setUsers([]);
-    setTimeout(async () => {
-      const data = await getUsers(page);
-      setUsers(data);
-    }, 2000)
+    const data = await getUsers(page);
+    setUsers(data);
   }
 
   const loadUsersFind = async (findWhere: UserFindBy, page: number) => {
     setQuantity(1);
     setUsers([]);
-    setTimeout(async () => {
-      if (findWhere.name || findWhere.email ) {
-        setFilter(findWhere);
-        const dataFind = await findUser(findWhere, page);
-        const quantityFind = await getQuantityUsersFind(findWhere);
+    
+    if (findWhere.name || findWhere.email ) {
+      setFilter(findWhere);
+      const dataFind = await findUser(findWhere, page);
+      const quantityFind = await getQuantityUsersFind(findWhere);
 
-        setQuantity(quantityFind);
-        setUsers(dataFind);
-      } else {
-        setFilter({});
-        const data = await getUsers(1);
-        const quantity = await getQuantityUsers();
+      setQuantity(quantityFind);
+      setUsers(dataFind);
+    } else {
+      setFilter({});
+      const data = await getUsers(1);
+      const quantity = await getQuantityUsers();
 
-        setQuantity(quantity);
-        setUsers(data);
-      }
-    }, 2000)
+      setQuantity(quantity);
+      setUsers(data);
+    }
   }
 
   const editUser = (user: User) => {

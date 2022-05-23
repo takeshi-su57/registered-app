@@ -2,7 +2,7 @@ import axios from 'axios';
 import { UserCreate, UserFindBy } from '../interfaces/user';
 
 const api = axios.create({
-  baseURL: process.env.API_URL || 'http://localhost:3001',
+  baseURL: process.env.API_URL || 'https://registrado-backend.herokuapp.com',
 });
 
 export const getUsers = async (page: number) => {

@@ -6,14 +6,16 @@ import styles from '../styles/styles.module.scss';
 type Props = {
   id: number;
   setWarning: Function;
+  setPage: Function;
 }
 
-const Warning: React.FC<Props> = ({ id, setWarning }) => {
+const Warning: React.FC<Props> = ({ id, setWarning, setPage }) => {
   const { loadUsersForPage } = useContext(AppContext);
 
   const userDelete = async () => {
     try {
       await deleteUser(id);
+      setPage(1);
       loadUsersForPage(1);
       setWarning({ view: false, id: 0 });
     } catch (error) {
