@@ -14,9 +14,10 @@ const TableUsers: NextComponentType = () => {
     loadUsersFind,
     quantityUsers,
     filter,
-    editUser
+    editUser,
+    page,
+    setPage
   } = useContext(AppContext);
-  const [page, setPage] = useState(1);
   const [warning, setWarning] = useState({ view: false, id: 0 });
 
   const nextPage = () => {
@@ -42,13 +43,13 @@ const TableUsers: NextComponentType = () => {
     Router.push(`/user/${user.id}`);
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     setPage(1);
-  }, [filter])
+  }, [filter]) */
 
   if (quantityUsers === 0) {
     return (
-      <div className={ styles.containerLoading }>
+      <div className={ styles.containerCenter }>
         <h1>Nenhum usuário foi encontrado</h1>
       </div>
     )

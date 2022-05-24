@@ -7,11 +7,12 @@ import styles from '../styles/styles.module.scss';
 const ControlPanel: NextComponentType = () => {
   const [search, setSearch] = useState('');
   const [findBy, setFindBy] = useState('name');
-  const { loadUsersFind } = useContext(AppContext);
+  const { loadUsersFind, setPage } = useContext(AppContext);
 
   const sendSearch = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
+    setPage(1);
     loadUsersFind({ [findBy]: search }, 1);
   }
 

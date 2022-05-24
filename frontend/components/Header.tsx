@@ -5,9 +5,10 @@ import { AppContext } from '../contexts/AppProvider';
 import styles from '../styles/styles.module.scss';
 
 const Header: NextComponentType = () => {
-  const { loadUsersForPage, filter } = useContext(AppContext);
+  const { loadUsersForPage, setPage } = useContext(AppContext);
 
   const loadHome = () => {
+    setPage(1);
     loadUsersForPage(1);
     Router.push('/');
   }

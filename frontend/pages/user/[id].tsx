@@ -11,7 +11,7 @@ import { updateUser } from '../../services/api';
 import styles from '../../styles/styles.module.scss';
 
 const UpdateUser: NextPage = () => {
-  const { userEdit, loadUsersForPage } = useContext(AppContext);
+  const { userEdit, loadUsersForPage, setPage } = useContext(AppContext);
   const [name, setName] = useState(userEdit.name);
   const [email, setEmail] = useState(userEdit.email);
   const [password, setPassword] = useState(userEdit.password);
@@ -29,9 +29,10 @@ const UpdateUser: NextPage = () => {
     event.preventDefault();
 
     try {
-      const newUser = await updateUser({ name, email, password }, userEdit.id);
+      await updateUser({ name, email, password }, userEdit.id);
       viewPopUpTimer(Message.SUCCESS_UPDATE);
       setTimeout(() => {
+        setPage(1);
         loadUsersForPage(1);
         Router.push('/');
       }, 5000)

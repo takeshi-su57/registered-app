@@ -3,3 +3,11 @@
   min-height: 70vh;
   width: $container-width;
 }
+
+.containerCenter {
+  color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}

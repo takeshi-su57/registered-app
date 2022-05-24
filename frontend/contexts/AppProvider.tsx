@@ -9,6 +9,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [users, setUsers] = useState(DEFAULT_VALUE.users);
   const [userEdit, setUserEdit] = useState(DEFAULT_VALUE.userEdit);
   const [filter, setFilter] = useState(DEFAULT_VALUE.filter);
+  const [page, setPage] = useState(DEFAULT_VALUE.page);
   const [quantityUsers, setQuantity] = useState(DEFAULT_VALUE.quantityUsers);
 
   const loadUsers = async () => {
@@ -61,6 +62,8 @@ export const AppProvider = ({ children }: propsProvider) => {
       quantityUsers,
       filter,
       userEdit,
+      page,
+      setPage,
       loadUsersForPage,
       loadUsersFind,
       editUser
