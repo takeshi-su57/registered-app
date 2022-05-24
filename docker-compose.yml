@@ -34,6 +34,7 @@ services:
     volumes:
       - ./frontend:/app
     environment:
+      - API_URL=http://localhost:3001/
       - NODE_ENV=dev
     restart: always
     depends_on:

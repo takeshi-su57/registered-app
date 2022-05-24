@@ -1,0 +1,74 @@
+.warningContainer {
+  background-color: rgba(200, 170, 255, 0.611);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .warning {
+    background-color: white;
+    border-top: 5px solid $primary-color;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.145);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    width: 300px;
+    min-height: 112px;
+    animation-name: fadeIn;
+    animation-duration: 0.1s;
+
+    h4 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 12px;
+      color: rgb(255, 77, 77);
+    }
+
+    .warningBtns {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        cursor: pointer;
+
+        &:first-child {
+          background-color: transparent;
+          padding: 0;
+          border: none;
+          color: $primary-color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &:last-child {
+          background-color: $primary-color;
+          padding: 5px 10px;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .loadWarning {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}

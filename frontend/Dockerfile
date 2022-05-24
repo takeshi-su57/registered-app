@@ -7,6 +7,8 @@ COPY . .
 RUN npm install --frozen-lockfile
 RUN npm run build
 
+ARG API_URL
+
 # Running the app
 EXPOSE 3000
 CMD [ "npm", "start" ]

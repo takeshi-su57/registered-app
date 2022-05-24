@@ -1,8 +1,11 @@
 import axios from 'axios';
+import getConfig from 'next/config';
 import { UserCreate, UserFindBy } from '../interfaces/user';
 
+const { publicRuntimeConfig } = getConfig();
+
 const api = axios.create({
-  baseURL: process.env.API_URL || 'https://registrado-backend.herokuapp.com',
+  baseURL: publicRuntimeConfig.API_URL,
 });
 
 export const getUsers = async (page: number) => {
