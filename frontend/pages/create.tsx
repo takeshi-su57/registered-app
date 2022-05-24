@@ -30,7 +30,7 @@ const Create: NextPage = () => {
     setLoading(true); 
 
     try {
-      const newUser = await createUser({ name, email, password });
+      await createUser({ name, email, password });
       viewPopUpTimer(Message.SUCCESS_REGISTER);
     } catch (error: any | AxiosError) {
       const err: errorMessage = error.response?.data;

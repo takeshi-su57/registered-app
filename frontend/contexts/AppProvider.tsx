@@ -23,6 +23,8 @@ export const AppProvider = ({ children }: propsProvider) => {
 
   const loadUsersForPage = async (page: number) => {
     setUsers([]);
+    const quantity = await getQuantityUsers();
+    setQuantity(quantity);
     const data = await getUsers(page);
     setUsers(data);
   }
