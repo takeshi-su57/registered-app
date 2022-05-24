@@ -43,10 +43,6 @@ const TableUsers: NextComponentType = () => {
     Router.push(`/user/${user.id}`);
   }
 
-  /* useEffect(() => {
-    setPage(1);
-  }, [filter]) */
-
   if (quantityUsers === 0) {
     return (
       <div className={ styles.containerCenter }>

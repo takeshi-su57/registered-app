@@ -1,14 +1,30 @@
 .header {
   background-color: $primary-color;
-  
+  max-height: 100px;
+
   &Container {
-    @include container;
+    width: $container-width;
+    margin: 0 auto;
+    padding: 1.5rem 0;
   }
 
   .title {
+    font-size: 4vh;
     display: inline-block;
     color: white;
     cursor: pointer;
-    margin: 10px;
+    margin: 0;
   }
+
+  @include laptopsAndDesktops {
+    &Container {
+      width: 100%;
+      padding: 1.5rem;
+    }
+
+    .title {
+      font-size: 3vh;
+    }
+  }
+    
 }

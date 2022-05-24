@@ -4,4 +4,22 @@
   max-width: $container-width;
   padding: 1.5rem 0;
   margin: 0 auto;
-}
+};
+
+@mixin laptopsAndDesktops {
+  @media(max-width: 1200px) {
+    @content
+  }
+};
+
+@mixin landscapeAndTablets {
+  @media(max-width: 900px) {
+    @content
+  }
+};
+
+@mixin largePhones {
+  @media(max-width: 600px) {
+    @content
+  }
+};
