@@ -30,12 +30,9 @@ const UpdateUser: NextPage = () => {
 
     try {
       await updateUser({ name, email, password }, userEdit.id);
-      viewPopUpTimer(Message.SUCCESS_UPDATE);
-      setTimeout(() => {
-        setPage(1);
-        loadUsersForPage(1);
-        Router.push('/');
-      }, 5000)
+      setPage(1);
+      loadUsersForPage(1);
+      Router.push('/sucess/update');
     } catch (error: any | AxiosError) {
       const err: errorMessage = error.response?.data;
       viewPopUpTimer(err.error.message);
