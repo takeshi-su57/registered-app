@@ -31,7 +31,7 @@ const Create: NextPage = () => {
 
     try {
       await createUser({ name, email, password });
-      viewPopUpTimer(Message.SUCCESS_REGISTER);
+      Router.push('/sucess/create');
     } catch (error: any | AxiosError) {
       const err: errorMessage = error.response?.data;
       viewPopUpTimer(err.error.message);

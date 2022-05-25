@@ -1,0 +1,50 @@
+.containerSucess {
+  color: $primary-color;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    font-size: 120px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  button {
+    background-color: $primary-color;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 5px;
+      background-color: white;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+      padding: 8px;
+    }
+  }
+
+  @include Mobile {
+    text-align: center;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    button {
+      font-size: 14px;
+    }
+
+    .containerBtnsSucess {
+      display: flex;
+    }
+  }
+}
