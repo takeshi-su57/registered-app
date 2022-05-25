@@ -5,7 +5,7 @@ import { UserCreate, UserFindBy } from '../interfaces/user';
 const { publicRuntimeConfig } = getConfig();
 
 const api = axios.create({
-  baseURL: publicRuntimeConfig.API_URL,
+  baseURL: publicRuntimeConfig.API_URL || 'https://registrado-backend.herokuapp.com/',
 });
 
 export const getUsers = async (page: number) => {
