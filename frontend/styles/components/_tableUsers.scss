@@ -122,6 +122,7 @@
 
     .cardUserBtns {
       display: flex;
+      z-index: 2;
 
       button {
         align-items: center;
@@ -156,6 +157,7 @@
     padding: 10px 20px;
     color: white;
     cursor: pointer;
+    z-index: 2;
 
     &:disabled {
       background-color: rgb(224, 224, 255);

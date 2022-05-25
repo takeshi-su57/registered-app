@@ -79,4 +79,36 @@
       display: none;
     }
   }
+
+  .containerBtnMobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 2;
+    visibility: hidden;
+
+    .btnNewUserMobile {
+      margin-bottom: 30px;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(78, 78, 78, 0.3);
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      padding: 5px 10px;
+
+      svg {
+        margin: 5px 0 0 2px;
+      }
+    }
+
+    @include Mobile {
+      visibility: visible;
+    }
+  }
 }
