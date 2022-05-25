@@ -14,6 +14,7 @@ export const DEFAULT_VALUE = {
   filter: {},
   userEdit: { id: 0, name: '', email: '', password: '', createdAt: new Date() },
   page: 1,
+  isMobile: false,
   editUser: () => {},
   setUsers: () => {},
   setPage: () => {},
@@ -28,6 +29,7 @@ export type AppContextType = {
   filter: { name?: string, email?: string };
   userEdit: User;
   page: number;
+  isMobile: boolean;
   setPage: Function;
   loadUsersForPage: Function;
   loadUsersFind: Function;

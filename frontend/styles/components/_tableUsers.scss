@@ -80,6 +80,70 @@
   }
 }
 
+.containerCardsUsers {
+  margin-top: 20px;
+
+  .cardUser {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+
+    .cardContent {
+      display: flex;
+      align-items: center;
+
+      .cardIndice {
+        background-color: $primary-color;
+        border-radius: 50%;
+        color: white;
+        display: inline-block;
+        padding: 5px;
+        margin-right: 10px;
+        font-size: 2.8vw;
+      }
+
+      h3, h4 {
+        margin: 0;
+      }
+  
+      h3 {
+        font-size: 3.5vw;
+      }
+
+      h4 {
+        font-size: 3vw;
+        color: $primary-color;
+      }
+    }
+
+    .cardUserBtns {
+      display: flex;
+
+      button {
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        border-radius: 50%;
+        color: $primary-color;
+        cursor: pointer;
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+        padding: 8px;
+
+        &:hover {
+          background-color: $primary-color;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
 .controlPage {
   display: flex;
   justify-content: space-between;

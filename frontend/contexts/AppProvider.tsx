@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { AppContextType, DEFAULT_VALUE, propsProvider, User } from '../interfaces/context';
 import { UserFindBy } from '../interfaces/user';
 import { findUser, getQuantityUsers, getQuantityUsersFind, getUsers } from '../services/api';
@@ -11,6 +12,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [filter, setFilter] = useState(DEFAULT_VALUE.filter);
   const [page, setPage] = useState(DEFAULT_VALUE.page);
   const [quantityUsers, setQuantity] = useState(DEFAULT_VALUE.quantityUsers);
+  let isMobile = useMediaQuery('(max-width: 600px)');
 
   const loadUsers = async () => {
     const quantity = await getQuantityUsers();
@@ -65,6 +67,7 @@ export const AppProvider = ({ children }: propsProvider) => {
       filter,
       userEdit,
       page,
+      isMobile,
       setPage,
       loadUsersForPage,
       loadUsersFind,
