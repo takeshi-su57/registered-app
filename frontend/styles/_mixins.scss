@@ -6,19 +6,25 @@
   margin: 0 auto;
 };
 
-@mixin laptopsAndDesktops {
-  @media(max-width: 1200px) {
+@mixin Desktops {
+  @media (max-width: 1280px) {
     @content
   }
 };
 
 @mixin landscapeAndTablets {
-  @media(max-width: 900px) {
+  @media(max-width: 768px) {
     @content
   }
 };
 
-@mixin largePhones {
+@mixin landscapeAndTablets {
+  @media(max-width: 768px) {
+    @content
+  }
+};
+
+@mixin Mobile {
   @media(max-width: 600px) {
     @content
   }

@@ -35,7 +35,7 @@ const ControlPanel: NextComponentType = () => {
         </button>
       </form>
       <button className={ styles.btnNewUser } onClick={ () => Router.push('/create') }>
-        +
+        Registrar novo usuário
       </button>
     </div>
   )

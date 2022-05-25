@@ -16,7 +16,7 @@
     margin: 0;
   }
 
-  @include laptopsAndDesktops {
+  @include Desktops {
     &Container {
       width: 100%;
       padding: 1.5rem;

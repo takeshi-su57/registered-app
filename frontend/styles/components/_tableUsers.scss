@@ -2,13 +2,6 @@
   margin: 20px 0;
   width: 100%;
 
-  @include largePhones {
-    background-color: green;
-    width: 100%;
-
-    font-size: 12px;
-  }
-
   thead {
     color: white;
     text-align: left;
@@ -104,6 +97,10 @@
       background-color: rgb(224, 224, 255);
       color: rgb(255, 255, 255);
       cursor: default;
+    }
+
+    @include Desktops {
+      font-size: 14px;
     }
   }
 }

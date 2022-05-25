@@ -3,8 +3,7 @@
   min-height: 70vh;
   width: $container-width;
 
-  @include laptopsAndDesktops {
-    background-color: yellow;
+  @include Desktops {
     width: 100%;
     padding: 0 1.5rem;
   }
