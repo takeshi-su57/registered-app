@@ -10,10 +10,15 @@
 
   .title {
     font-size: 4vh;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     color: white;
     cursor: pointer;
     margin: 0;
+
+    svg {
+      margin-right: 10px;
+    }
   }
 
   @include Desktops {
