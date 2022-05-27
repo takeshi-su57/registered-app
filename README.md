@@ -52,6 +52,13 @@ Aplicação de registro de usuários capaz de criar, ler, atualizar e deletar us
 <h2>Back-end</h2>
 
 <details>
+  <summary><strong>🛸 Sobre</strong></summary><br />
+  
+  - O back-end da aplicação foi desenvolvido com `Node.js`, `TypeScript`, `Express` e `Prisma`. A aplicação pode ser acessada localmente (Se o container estiver em execução) no endereço `http://localhost:3001/`.
+
+</details>
+
+<details>
   <summary><strong>📁 Organização</strong></summary><br />
 
     └── 📂 registrado-app
@@ -397,5 +404,54 @@ Aplicação de registro de usuários capaz de criar, ler, atualizar e deletar us
         }
         ```
       </details>
+
+</details>
+
+<details>
+  <summary><strong>💾 Banco de dados</strong></summary><br />
+  
+  - A aplicação utiliza o banco de dados `PostgreSQL`, criado pelo Docker Compose, para armazenar os dados, ou seja, não é necessário ter o PostgreSQL instalado na máquina.
+
+    <br />
+
+    <details>
+      <summary><strong>🔷 Comandos do Prisma</strong></summary><br />
+      
+      > ⚠️ Os comandos a seguir devem ser executados no terminal do container de Back-end!
+
+      - Reseta o banco de dados: `npx prisma migrate reset --force`;
+      - Registras os usuários de `seed.ts`: `npx prisma db seed`;
+        - Use este comando quando o banco de dados estiver vazio.
+    </details>
+
+</details>
+
+<h2>Front-end</h2>
+
+<details>
+  <summary><strong>🎨 Sobre</strong></summary><br />
+  
+  - O front-end da aplicação foi desenvolvido com `Next.js`, `TypeScript`, `Sass` e `Axios`. A aplicação pode ser acessada localmente (Se o container estiver em execução) no endereço `http://localhost:3000/`.
+
+</details>
+
+<details>
+  <summary><strong>📁 Organização</strong></summary><br />
+
+    └── 📂 registrado-app
+        ├── 📂 frontend
+        |   ├── 📂 components                   // Pasta com os componentes Next.js da aplicação
+        |   ├── 📂 contexts                     // Pasta com o Context API e Provider
+        |   ├── 📂 hooks
+        |   |   └── 📄 useMediaQuery.ts         // Hook auxiliar para responsividade da aplicação
+        |   ├── 📂 interfaces                   // Arquivos de tipagem de dados
+        |   ├── 📂 pages                        // Pasta com as páginas da aplicação
+        |   ├── 📂 public                       
+        |   ├── 📂 services                     
+        |   |   └── 📄 api.ts                   // Arquivo de conexão com a API através do Axios
+        |   ├── 📂 styles                       // Estilos da aplicação feito em Scss
+        |   ├── 📄 Dockerfile                   // Arquivo de configuração do container Docker
+        |   └── 📄 tsconfig.json                // Arquivo de configuração do TypeScript
+        └── 📁 backend
 
 </details>
