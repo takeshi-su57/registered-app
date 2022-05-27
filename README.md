@@ -52,6 +52,31 @@ Aplicação de registro de usuários capaz de criar, ler, atualizar e deletar us
 <h2>Back-end</h2>
 
 <details>
+  <summary><strong>📁 Organização</strong></summary><br />
+
+    └── 📂 registrado-app
+        ├── 📂 backend
+        |   ├── 📂 prisma
+        |   |   ├── 📁 migrations               // Histórico de migrações de schema do Prisma
+        |   |   ├── 📄 seed.ts                  // Arquivo com os dados iniciais do DB
+        |   |   └── 📄 schema.prisma            // Arquivo que referencia e configura as tabelas do DB
+        |   └── 📂 src
+        │       ├── 📂 database
+        │       |   └── 📄 connection.ts        // Faz a conexão com o banco de dados através do Prisma Client
+        |       ├── 📁 models                   // Pasta com arquivos que se comunicam diretamente com o DB
+        |       ├── 📁 services                 // Pasta com arquivos que fazem conexão com o cliente e o DB
+        |       ├── 📁 controllers              // Pasta com arquivos que se comunicam diretamente com o cliente
+        |       ├── 📁 interfaces               // Pasta com interfaces de tipagem de objetos
+        |       ├── 📁 validations              // Pasta com as validações executadas pela biblioteca Joi
+        |       ├── 📁 middlewares
+        |       |   └── 📄 error.ts             // Middleware para tratamento de erros da API
+        |       ├── 📁 routes                   // Pasta com as rotas (Endpoints) da API
+        |       └── 📄 server.ts                // Arquivo de configuração e inicialização da API
+        └── 📁 frontend
+
+</details>
+
+<details>
   <summary><strong>🎯 Endpoints</strong></summary><br />
 
   **GET**
