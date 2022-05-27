@@ -44,6 +44,16 @@ Aplicação de registro de usuários capaz de criar, ler, atualizar e deletar us
 </details>
 
 <details>
+  <summary><strong>💻 Deploy</strong></summary><br />
+  
+  - O deploy é realizado na plataforma do Heroku. Links das aplicações:
+    - Front-end: https://registrado-frontend.herokuapp.com/
+    - Back-end: https://registrado-backend.herokuapp.com/
+  - O deploy de ambos os ambientes (Front e Back-end) é executado automaticamente através do GitHub Actions. Qualquer mudança feita na branch `main` do repositório remoto do projeto já inicia o processo de deploy.
+  - O arquivo da action de deploy se encontra em: `.github/workflows/main.yml`.
+</details>
+
+<details>
   <summary><strong>💡 Dica</strong></summary><br />
   
   - No projeto há um arquivo `app.code-workspace`, com ele é criado um workspace no VSCode separando o Front-end e o Back-end da aplicação.
