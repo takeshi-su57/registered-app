@@ -431,6 +431,8 @@ Aplicação de registro de usuários capaz de criar, ler, atualizar e deletar us
 <details>
   <summary><strong>🎨 Sobre</strong></summary><br />
   
+  ![Captura de tela 2022-05-25 - 18 32 04](https://user-images.githubusercontent.com/47402835/170742085-4ae95fbe-fdad-4ba5-b75e-8627b0333e66.png)
+  
   - O front-end da aplicação foi desenvolvido com `Next.js`, `TypeScript`, `Sass` e `Axios`. A aplicação pode ser acessada localmente (Se o container estiver em execução) no endereço `http://localhost:3000/`.
 
 </details>
