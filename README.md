@@ -43,4 +43,334 @@ Aplicação de registro de usuários capaz de criar, ler, atualizar e deletar us
 
 </details>
 
+<details>
+  <summary><strong>💡 Dica</strong></summary><br />
+  
+  - No projeto há um arquivo `app.code-workspace`, com ele é criado um workspace no VSCode separando o Front-end e o Back-end da aplicação.
+</details>
+
 <h2>Back-end</h2>
+
+<details>
+  <summary><strong>🎯 Endpoints</strong></summary><br />
+
+  **GET**
+
+  - <h3><code>/users/page/:page</code></h3>
+
+    - Retorna um array contendo 10 usuários. Dependendo do número passado no parâmetro `:page` apenas uma fração especifica de usuários é retornada, por exemplo: O endpoint `/users/page/2` retorna os usuários de ordem 11-20. (Endpoint criado especialmente para dar o efeito de paginação no Front-end)
+      
+  
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+
+        ```json
+        [
+          {
+            "id": 1,
+            "name": "Adilson Gabriel",
+            "email": "adilsongb.rabelo@gmail.com",
+            "password": "F4MAJVQ3hkFElTb",
+            "createdAt": "2022-05-26T21:42:34.364Z"
+          },
+          {
+            "id": 2,
+            "name": "Carlos Nogueira",
+            "email": "carlos_nogueira@email.com",
+            "password": "GsI2Y00ca05Lftu",
+            "createdAt": "2022-05-26T21:42:34.364Z"
+          },
+          {
+            "id": 3,
+            "name": "Amanda Sousa",
+            "email": "amandinha2009@email.com",
+            "password": "Up6CsttZ6mmKbcd",
+            "createdAt": "2022-05-26T21:42:34.364Z"
+          },
+          {
+            "id": 4,
+            "name": "Bernardo Gomes",
+            "email": "berngomess@email.com",
+            "password": "IrbWXLmxziRXLlu",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          },
+          {
+            "id": 5,
+            "name": "Beatriz Castro",
+            "email": "beaahcas@email.com",
+            "password": "sfD551gbKmfad9u",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          },
+          {
+            "id": 6,
+            "name": "Eliza Marcena",
+            "email": "elizzamar23@email.com",
+            "password": "5yF8V4CEhUXtub6",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          },
+          {
+            "id": 7,
+            "name": "Matheus Santos",
+            "email": "mathforsant@email.com",
+            "password": "C4BDJ0pmghaKgEz",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          },
+          {
+            "id": 8,
+            "name": "Joyce Vizoto",
+            "email": "joysunviz@email.com",
+            "password": "iArEIBlEA1mHow0",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          },
+          {
+            "id": 9,
+            "name": "Anthony Barbosa",
+            "email": "thonyukii@email.com",
+            "password": "KYfqh4UcjRFbQao",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          },
+          {
+            "id": 10,
+            "name": "João Marcelo",
+            "email": "juaomar276@email.com",
+            "password": "PSfasLke187BBzT",
+            "createdAt": "2022-05-26T21:42:34.365Z"
+          }
+        ]
+        ```
+      </details>
+
+ 
+  - <h3><code>/users/get/:id</code></h3>
+
+    - Retorna um objeto contendo o usuário que possui o `id` passado pelo parâmetro.
+  
+  
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+        
+        `/users/get/1`
+
+        ```json
+        {
+          "id": 1,
+          "name": "Adilson Gabriel",
+          "email": "adilsongb.rabelo@email.com",
+          "password": "F4MAJVQ3hkFElTb",
+          "createdAt": "2022-05-26T22:19:19.023Z"
+        }
+        ```
+      </details>
+ 
+  - <h3><code>/users/find?[email || name]=[string]&skip=[number]</code></h3>
+
+    - Retorna um array contendo todos os usuários filtrados pela query. O endpoint aceita filtrar pelos atributos `email` e `name`. A query `skip` deve ser obrigatória para criar o efeito de paginação caso a pesquisa retorne mais que 10 usuários.
+
+
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+        
+        `/users/find?email=hotmail&skip=1`
+ 
+         ```json
+          [
+            {
+              "id": 11,
+              "name": "Lila Hudson",
+              "email": "lila_hudson@hotmail.com",
+              "password": "OoscW4dbwZZAcPy",
+              "createdAt": "2022-05-26T22:31:09.228Z"
+            },
+            {
+              "id": 12,
+              "name": "Royne Tremblay",
+              "email": "roy.tremblay2@hotmail.com",
+              "password": "QtWFaPmp51NyrgO",
+              "createdAt": "2022-05-26T22:31:09.228Z"
+            },
+            {
+              "id": 16,
+              "name": "Rosella Nogueira",
+              "email": "rosella_rath47@hotmail.com",
+              "password": "Bm9iXnpnmAyoVVi",
+              "createdAt": "2022-05-26T22:31:09.228Z"
+            },
+            {
+              "id": 35,
+              "name": "Vilma Dincley",
+              "email": "vilma58@hotmail.com",
+              "password": "AJr9AiPzekXP_lQ",
+              "createdAt": "2022-05-26T22:31:09.229Z"
+            },
+            {
+              "id": 36,
+              "name": "Katheryn Wunsch",
+              "email": "katheryn.wunsch@hotmail.com",
+              "password": "ie9ZNkeTfEjYyy8",
+              "createdAt": "2022-05-26T22:31:09.229Z"
+            },
+            {
+              "id": 40,
+              "name": "Willie Cruick",
+              "email": "willie_cruickshank94@hotmail.com",
+              "password": "5Owmrjbdbrj1W8t",
+              "createdAt": "2022-05-26T22:31:09.229Z"
+            },
+            {
+              "id": 41,
+              "name": "Erick Wisoky",
+              "email": "erin.wisoky@hotmail.com",
+              "password": "x4F7vq58SGdyEa7",
+              "createdAt": "2022-05-26T22:31:09.229Z"
+            },
+            {
+              "id": 42,
+              "name": "Melvin O'connell",
+              "email": "melvin.oconnell@hotmail.com",
+              "password": "sdIKcjKjyQEyuDC",
+              "createdAt": "2022-05-26T22:31:09.229Z"
+            },
+            {
+              "id": 44,
+              "name": "Shanel Cronack",
+              "email": "shanel_crona69@hotmail.com",
+              "password": "GVHapyvXJeAujfd",
+              "createdAt": "2022-05-26T22:31:09.230Z"
+            },
+            {
+              "id": 46,
+              "name": "Corbin Satthy",
+              "email": "corbin56@hotmail.com",
+              "password": "WBwH0mLhos6vTkq",
+              "createdAt": "2022-05-26T22:31:09.230Z"
+            }
+          ]
+         ```
+   
+        `/users/find?name=gabriel&skip=1`
+ 
+         ```json
+          [
+            {
+              "id": 1,
+              "name": "Adilson Gabriel",
+              "email": "adilsongb.rabelo@email.com",
+              "password": "F4MAJVQ3hkFElTb",
+              "createdAt": "2022-05-26T22:31:09.227Z"
+            }
+          ]
+         ```
+        
+        </details>
+
+  - <h3><code>/users/count?[email || name]=[string]</code></h3>
+
+    - Retorna a quantidade de usuários registrados no banco de dados. O endpoint aceita uma query que filtra a quantidade de usuários com `email` ou `name` especifico.
+      
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+        
+        `/users/count`
+        
+        ```json
+        50
+        ```
+        
+        `/users/count?email=hotmail`
+ 
+        ```json
+        12
+        ```
+      </details>
+  
+  **POST**
+  
+  - <h3><code>/users/create</code></h3>
+
+    - Registra um novo usuário no banco de dados. O endpoint deve receber na requisição um body com o seguinte objeto:
+    
+      ```json
+      {
+        "name": "Daenarys Targaryen",
+        "email": "daenarystarg@hotmail.com",
+        "password": "drogodracarys"
+      }
+      ```
+ 
+    - As seguintes validações do [Joi](https://www.npmjs.com/package/joi) são consideradas:
+      - `name`: É obrigatório na requisição, deve ser uma `string` e ter no mínimo 6 caracteres;
+      - `email`: É obrigatório na requisição, deve ser uma `string` e ter o formato `email@email.com`;
+      - `password`: É obrigatório na requisição, deve ser uma `string` e ter no mínimo 8 caracteres.
+      
+      <br/>
+
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+
+        ```json
+        {
+          "id": 51,
+          "name": "Daenarys Targaryen",
+          "email": "daenarystarg@hotmail.com",
+          "password": "drogodracarys",
+          "createdAt": "2022-05-26T23:21:26.932Z"
+        }
+        ```
+      </details>
+  
+  **PUT**
+  
+  - <h3><code>/users/update/:id</code></h3>
+
+    - Atualiza as informações de um determinado usuário com base no `:id` passado por parâmetro. A requisição deve ter um objeto com os atributos que serão atualizados no banco de dados, por exemplo:
+
+      ```json
+      {
+        "email": "adilsongabriel2000@gmail.com"
+      }
+      ```
+
+    - As seguintes validações do [Joi](https://www.npmjs.com/package/joi) são consideradas:
+      - `name`: Deve ser uma `string` e ter no mínimo 6 caracteres;
+      - `email`: Deve ser uma `string` e ter o formato `email@email.com`;
+      - `password`: Deve ser uma `string` e ter no mínimo 8 caracteres.
+  
+      <br/>
+      
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+
+        ```json
+        {
+          "id": 1,
+          "name": "Adilson Gabriel",
+          "email": "adilsongabriel2000@gmail.com",
+          "password": "F4MAJVQ3hkFElTb",
+          "createdAt": "2022-05-26T22:31:09.227Z"
+        }
+        ```
+      </details>
+ 
+  **DELETE**
+  
+  - <h3><code>/users/delete/:id</code></h3>
+
+    - Deleta um usuário do banco de dados de acordo com o `:id` passado por parâmetro.
+  
+      <details>
+        <summary><strong>🪃 Exemplo de retorno</strong></summary><br />
+        
+        `/users/delete/5`
+
+        ```json
+        {
+          "id": 5,
+          "name": "Beatriz Castro",
+          "email": "beaahcas@email.com",
+          "password": "sfD551gbKmfad9u",
+          "createdAt": "2022-05-26T22:31:09.227Z"
+        }
+        ```
+      </details>
+
+</details>
