@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { UserBody, UserFindBy } from '../interfaces';
 import * as userService from '../services/userService';
-import * as Joi from '../auth/validation';
+import * as Joi from '../validations';
 
 export const getCountUsers = async (req: Request, res: Response, next: NextFunction) => {
   const { email, name } = req.query;

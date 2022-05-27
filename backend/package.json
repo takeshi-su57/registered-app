@@ -8,7 +8,7 @@
     "build": "npx prisma migrate deploy && npx prisma db seed && tsc",
     "db:reset": "npx prisma migrate reset --force",
     "start": "tsc && node dist/server.js",
-    "dev": "ts-node-dev src/server.ts"
+    "dev": "npm run db:reset && ts-node-dev src/server.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

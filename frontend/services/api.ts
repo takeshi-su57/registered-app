@@ -19,7 +19,7 @@ export const getUser = async (id: string) => {
 }
 
 export const getQuantityUsers = async () => {
-  const { data } = await api.get('/users');
+  const { data } = await api.get('/users/count');
   return data;
 };
 
@@ -33,7 +33,7 @@ export const findUser = async (findWhere: UserFindBy, page: number) => {
 export const getQuantityUsersFind = async (findWhere: UserFindBy) => {
   const objFind = Object.entries(findWhere)[0];
 
-  const { data } = await api.get(`/users?${objFind[0]}=${objFind[1]}`);
+  const { data } = await api.get(`/users/count?${objFind[0]}=${objFind[1]}`);
   return data;
 };
 
